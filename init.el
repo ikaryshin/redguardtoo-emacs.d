@@ -2,7 +2,9 @@
 ;; (advice-add #'package-initialize :after #'update-load-path)
 
 ;; Without this comment emacs25 adds (package-initialize) here
-;; (package-initialize)
+;; (ackage-initialize)
+
+;; comments with # are not from redguardtoo
 
 (push (expand-file-name "~/.emacs.d/lisp") load-path)
 
@@ -10,20 +12,29 @@
   (when (version< emacs-version minver)
     (error "Emacs v%s or higher is required." minver)))
 
+;;# set the best garbage collection threshold
+;;# if the value is set too large, emacs will gc too much memory at one time
+;;# and that might reduce performance
 (defvar best-gc-cons-threshold
   4000000
   "Best default gc threshold value.  Should NOT be too big!")
 
+;;# maybe we just don't need gc during startup
+;;# first set a very large value to stop gc
 ;; don't GC during startup to save time
 (setq gc-cons-threshold most-positive-fixnum)
 
+;;# to record the start time
 (setq emacs-load-start-time (current-time))
 
+;;# maybe already fixed in emacs25
 ;; {{ emergency security fix
 ;; https://bugs.debian.org/766397
 (eval-after-load "enriched"
-  '(defun enriched-decode-display-prop (start end &optional param)
-     (list start end)))
+ '(defun enriched-decode-display-prop (start end &optional param)
+   (list start end)))
+
+;;# some boolean values
 ;; }}
 ;;----------------------------------------------------------------------------
 ;; Which functionality to enable (use t or nil for true and false)

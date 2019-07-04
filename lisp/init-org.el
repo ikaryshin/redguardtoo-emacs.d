@@ -137,7 +137,7 @@ If use-indirect-buffer is not nil, use `indirect-buffer' to hold the widen conte
 
 
 (setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
+      (quote ((sequence "TODO(t)" "STARTED(s)" "CONTINUED(k)" "|" "DONE(d!/!)")
               (sequence "WAITING(w@/!)" "SOMEDAY(S)" "PROJECT(P@)" "|" "CANCELLED(c@/!)"))))
 
 
@@ -146,7 +146,7 @@ If use-indirect-buffer is not nil, use `indirect-buffer' to hold the widen conte
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Change task state to STARTED when clocking in
-(setq org-clock-in-switch-to-state "STARTED")
+(setq org-clock-in-switch-to-state "CONTINUED")
 ;; Save clock data and notes in the LOGBOOK drawer
 (setq org-clock-into-drawer t)
 ;; Removes clocked tasks with 0:00 duration
